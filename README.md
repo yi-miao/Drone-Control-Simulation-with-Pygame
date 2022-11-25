@@ -29,7 +29,7 @@ Gamepad (Mode 2):
 DroneSim GUI:  
 ![Start Page](demo.png)  
 DroneSim Video:  
-![Video](demo.mp4)  
+[![Video]](demo.mp4)  
 
 [Ref 1] https://www.pygame.org/news  
 
