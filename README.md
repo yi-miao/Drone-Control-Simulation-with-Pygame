@@ -27,9 +27,9 @@ Gamepad (Mode 2):
 - Axis 5: Reset
 
 DroneSim GUI:  
-![Start Page](demo.png)
+![Start Page](demo.png)  
 DroneSim Video:  
-![Video](demo.mp4)
+![Video](demo.mp4)  
 
-[Ref 1] https://www.pygame.org/news
+[Ref 1] https://www.pygame.org/news  
 
