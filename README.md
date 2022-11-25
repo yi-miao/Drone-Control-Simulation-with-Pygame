@@ -1,5 +1,5 @@
-This a simple game which simulates the drone control with gamepad.  
-It uses Pygame to mimic 4 axis control for yaw, throttle, roll and pitch.  
+This is a simple game which simulates drone controls with gamepad.  
+It uses Pygame to mimic 4 axis controls for yaw, throttle, roll and pitch.  
 
 The biggest challenge is that pygame only supports 2D games, but it is  
 required to control a drone with 4 axises and display the results.  
