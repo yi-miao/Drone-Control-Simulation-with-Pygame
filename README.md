@@ -29,7 +29,7 @@ Gamepad (Mode 2):
 Start Page:  
 ![Start Page](demo.png)  
 Demo Video:  
-[![]()](demo.mp4)  
+[![demo]()](demo.mp4)  
 
 [Ref 1] https://www.pygame.org/news  
 
