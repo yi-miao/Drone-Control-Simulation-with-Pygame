@@ -26,9 +26,9 @@ Gamepad (Mode 2):
 - Axis 4: Speed: +10%  
 - Axis 5: Reset
 
-DroneSim GUI:
+DroneSim GUI:  
 ![Start Page](demo.png)
-DroneSim Video:
+DroneSim Video:  
 ![Video](demo.mp4)
 
 [Ref 1] https://www.pygame.org/news
