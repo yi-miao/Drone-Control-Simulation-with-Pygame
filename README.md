@@ -29,7 +29,9 @@ Gamepad (Mode 2):
 Start Page:  
 ![Start Page](demo.png)  
 Demo Video:  
-[![demo]()](demo.mp4)  
+https://user-images.githubusercontent.com/40175039/204050898-9efa083e-a28d-4c83-983d-b90b10778d09.mp4  
+
+![demo](https://user-images.githubusercontent.com/40175039/204050904-a979e511-494e-49ae-b091-68c5d9eece33.png)
 
 [Ref 1] https://www.pygame.org/news  
 
