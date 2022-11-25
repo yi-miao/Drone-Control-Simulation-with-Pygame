@@ -29,7 +29,7 @@ Gamepad (Mode 2):
 Start Page:  
 ![Start Page](demo.png)  
 DroneSim Video:  
-[![Demo Video]](https://github.com/yi-miao/Drone-Control-Simulation-with-Pygame/blob/main/demo.mp4)  
+[![Demo Video](demo.mp4)]  
 
 [Ref 1] https://www.pygame.org/news  
 
