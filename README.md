@@ -26,11 +26,17 @@ B. Game Controls:
 - Axis 4: Speed: +10%  
 - Axis 5: Reset
 
-C. Screenshot and Video  
+C. Code:  
+- DroneSim.py  
+- ViewSim.py  
+
+D. Screenshot and Video  
 1. Start Page:  
 ![Start Page](demo.png)  
 2. Demo Video:  
 https://user-images.githubusercontent.com/40175039/204050898-9efa083e-a28d-4c83-983d-b90b10778d09.mp4  
+3. View Sim:  
+![ViewSim](viewsim.png)  
 
 [Ref 1] https://www.pygame.org/    
 
