@@ -1,5 +1,13 @@
 This is a simple game which simulates drone controls with gamepad.  
-It uses Pygame to mimic 4 axis controls for yaw, throttle, roll and pitch.  
+It uses Pygame to mimic .  
+
+Features:
+1. 2x2 joystick controls for flight yaw, throttle, roll and pitch  
+2. 2D display with different drone postures   
+3. drone icons with transparent background  
+4. overlay background of beautiful Niagara Falls  
+5. continuous speed control with 10 gears  
+6. quick reset with one button click
 
 The biggest challenge is that pygame only supports 2D games, but it is  
 required to control a drone with 4 axises and display the results.  
@@ -29,7 +37,7 @@ B. Game Controls:
 C. Code:  
 - DroneSim.py  
 
-D. Screenshot and Video  
+D. Screenshot  
 - Drone Sim:  
 ![DroneSit](dronesim.png)  
 
