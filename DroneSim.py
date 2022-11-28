@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 cap = "Drone Sim"
-screen = pygame.display.set_mode((360, 360))
+screen = pygame.display.set_mode((480, 480))
 pygame.display.set_caption(cap)
 
 clock = pygame.time.Clock()
@@ -23,12 +23,12 @@ sf = img0
 
 done = False
 black = (0,0,0)
-x0 = -1100
-y0 = -620
+x0 = -1040
+y0 = -560
 x = x0
 y = y0
 v = 10
-t = 0.08
+t = 0.05
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -61,33 +61,37 @@ while not done:
                     cap = "Yaw Left"
             if (i == 0) and (axis > t):
                 sf = img0YR
-                if x > -2200:
+                if x > -2080:
                     x -= v*axis
                     cap = "Yaw Right"
             if (i == 1) and (axis < -t):
                 sf = img0
-                y += v*axis*0.2
-                cap = "Throttle Up"
+                if y > -1120:
+                    y += v*axis*0.2
+                    cap = "Throttle Up"
             if (i == 1) and (axis > t):
                 sf = img0
-                y += v*axis*0.2
-                cap = "Throttle Down"
+                if y < -0:
+                    y += v*axis*0.2
+                    cap = "Throttle Down"
             if (i == 2) and (axis < -t):
                 sf = img12RL
-                x += v*axis*0.2
-                cap = "Roll Left"
+                if x < 0:
+                    x += v*axis*0.2
+                    cap = "Roll Left"
             if (i == 2) and (axis > t):
                 sf = img12RR
-                x += v*axis*0.2
-                cap = "Roll Right"
+                if x > -2080:
+                    x += v*axis*0.2
+                    cap = "Roll Right"
             if (i == 3) and (axis < -t):
                 sf = img1
-                if y > -1230:
+                if y > -1120:
                     y += v*axis
                     cap = "Pitch Up"
             if (i == 3) and (axis > t):
                 sf = img1
-                if y < -10:
+                if y < -0:
                     y += v*axis
                     cap = "Pitch Down"
             if (i == 4) and (axis > t):
@@ -99,7 +103,7 @@ while not done:
 
     pygame.display.set_caption(cap + ': ' + str(round(x,0)) + ' , ' + str(round(y,0)))  
     screen.blit(bg, (x, y))
-    screen.blit(sf, (107, 107))
+    screen.blit(sf, (184, 184))
     pygame.display.update()
 
     clock.tick(30)
