@@ -7,7 +7,8 @@ Features:
 3. drone icons with transparent background  
 4. overlay background of beautiful Niagara Falls  
 5. continuous speed control with 10 gears  
-6. quick reset with one button click
+6. quick reset with one button click  
+7. simple program with only 100 lines of code  
 
 The biggest challenge is that pygame only supports 2D games, but it is  
 required to control a drone with 4 axises and display the results.  
