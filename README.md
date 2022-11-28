@@ -2,9 +2,9 @@ This is a simple game which simulates drone controls with gamepad.
 
 Features:
 1. 2 joystick controls for flight yaw, throttle, roll and pitch  
-2. 2D display with different drone postures   
+2. 2x2D display with different drone postures   
 3. drone icons with transparent background  
-4. overlay background of beautiful Niagara Falls  
+4. overlay background of the Niagara Falls  
 5. continuous speed control with 10 gears  
 6. quick reset with one button click  
 7. simple program with only 100 lines of code  
