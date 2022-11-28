@@ -1,8 +1,7 @@
 This is a simple game which simulates drone controls with gamepad.  
-It uses Pygame to mimic .  
 
 Features:
-1. 2x2 joystick controls for flight yaw, throttle, roll and pitch  
+1. 2 joystick controls for flight yaw, throttle, roll and pitch  
 2. 2D display with different drone postures   
 3. drone icons with transparent background  
 4. overlay background of beautiful Niagara Falls  
