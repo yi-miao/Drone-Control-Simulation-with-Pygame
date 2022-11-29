@@ -1,4 +1,4 @@
-This is a simple game which simulates drone controls with gamepad.  
+This is a simple game which simulates drone controls with gamepad. 
 
 Features:
 1. 2 joystick controls for flight yaw, throttle, roll and pitch  
