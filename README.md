@@ -3,7 +3,7 @@ This is a simple game which simulates drone controls with gamepad.
 Features:
 1. 2 joystick controls for flight yaw, throttle, roll and pitch  
 2. 2x2D display with different drone postures   
-3. drone icons with transparent background  
+3. drone icons for transparent background  
 4. overlay background of the Niagara Falls  
 5. continuous speed control with 10 gears  
 6. quick reset with one button click  
@@ -23,8 +23,8 @@ A. Environments:
 B. Game Controls:
 
 1. Windows:
-- Start: python dronesim.py
-- Exit: ESC key
+- Start: python DroneSim.py
+- Exit: ESC key or Close Game Window
 
 2. Gamepad (Mode 2):  
 - Axis 0: Yaw: Left, Right  
