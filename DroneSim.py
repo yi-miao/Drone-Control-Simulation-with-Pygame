@@ -86,13 +86,13 @@ while not done:
                 sf = img12RL
                 if x < 0:
                     x -= v*axis*0.2
-#                    r = 25
+                    r = 25
             if (i == 2) and (axis > t):
                 cap = "Roll Right"
                 sf = img12RR
                 if x > x1:
                     x -= v*axis*0.2
-#                    r = -25
+                    r = -25
             if (i == 3) and (axis < -t):
                 cap = "Pitch Up"
                 sf = img1
@@ -111,10 +111,12 @@ while not done:
                 y = y0
                 
     pygame.display.set_caption(cap + ': ' + str(round(x,0)) + ' , ' + str(round(y,0)))  
-#    if r != 0:
-#        bg = pygame.transform.rotate(bg, r)
- #       screen.blit(bg, (240, -800))
-    screen.blit(bg, (x, y))
+    if r != 0:
+        rotated_bg = pygame.transform.rotate(bg, r)
+        new_rect = rotated_bg.get_rect(center = bg.get_rect(topleft = (x, y)).center)
+        screen.blit(rotated_bg, new_rect)
+    else:
+        screen.blit(bg, (x, y))
     screen.blit(sf, (180, 180))
     pygame.display.update()
 
