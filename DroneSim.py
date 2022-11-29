@@ -3,7 +3,8 @@ import pygame
 pygame.init()
 
 cap = "Drone Sim"
-screen = pygame.display.set_mode((480, 480))
+(ww, wh) = (480, 480)
+screen = pygame.display.set_mode((ww, wh))
 pygame.display.set_caption(cap)
 
 clock = pygame.time.Clock()
@@ -19,16 +20,21 @@ img12RL = pygame.image.load("images/12RL.png").convert_alpha()
 img12RR = pygame.image.load("images/12RR.png").convert_alpha()
  
 bg = img00
+bgw, bgh = bg.get_size()
 sf = img0
+sfw, sfh = sf.get_size()
 
 done = False
 black = (0,0,0)
-x0 = -1040
-y0 = -560
+x0 = -(bgw-ww)/2
+x1 = -(bgw-ww)
+y0 = -(bgh-wh)/2
+y1 = -(bgh-wh)
 x = x0
 y = y0
 v = 10
 t = 0.05
+r = 0
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -49,61 +55,67 @@ while not done:
     cap = "Drone Sim"
     bg = img00
     sf = img0
+    r = 0
     
     for joystick in joysticks.values():
         axes = joystick.get_numaxes()
         for i in range(axes):
             axis = joystick.get_axis(i)
             if (i == 0) and (axis < -t):
+                cap = "Yaw Left"
                 sf = img0YL
                 if x < 0:
                     x -= v*axis
-                    cap = "Yaw Left"
             if (i == 0) and (axis > t):
+                cap = "Yaw Right"
                 sf = img0YR
-                if x > -2080:
+                if x > x1:
                     x -= v*axis
-                    cap = "Yaw Right"
             if (i == 1) and (axis < -t):
-                sf = img0
-                if y > -1120:
+                cap = "Throttle Up"
+                sf = img0 
+                if y > y1:
                     y += v*axis*0.2
-                    cap = "Throttle Up"
             if (i == 1) and (axis > t):
+                cap = "Throttle Down"
                 sf = img0
-                if y < -0:
+                if y < 0:
                     y += v*axis*0.2
-                    cap = "Throttle Down"
             if (i == 2) and (axis < -t):
+                cap = "Roll Left"
                 sf = img12RL
                 if x < 0:
-                    x += v*axis*0.2
-                    cap = "Roll Left"
+                    x -= v*axis*0.2
+#                    r = 25
             if (i == 2) and (axis > t):
+                cap = "Roll Right"
                 sf = img12RR
-                if x > -2080:
-                    x += v*axis*0.2
-                    cap = "Roll Right"
+                if x > x1:
+                    x -= v*axis*0.2
+#                    r = -25
             if (i == 3) and (axis < -t):
+                cap = "Pitch Up"
                 sf = img1
-                if y > -1120:
+                if y > y1:
                     y += v*axis
-                    cap = "Pitch Up"
             if (i == 3) and (axis > t):
+                cap = "Pitch Down"
                 sf = img1
-                if y < -0:
+                if y < 0:
                     y += v*axis
-                    cap = "Pitch Down"
             if (i == 4) and (axis > t):
                 v += v/10
             if (i == 5) and (axis > t):
                 v = 10
                 x = x0
                 y = y0
-
+                
     pygame.display.set_caption(cap + ': ' + str(round(x,0)) + ' , ' + str(round(y,0)))  
+#    if r != 0:
+#        bg = pygame.transform.rotate(bg, r)
+ #       screen.blit(bg, (240, -800))
     screen.blit(bg, (x, y))
-    screen.blit(sf, (184, 184))
+    screen.blit(sf, (180, 180))
     pygame.display.update()
 
     clock.tick(30)
