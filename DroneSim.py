@@ -3,13 +3,11 @@ import pygame
 pygame.init()
 
 cap = "Drone Sim"
-(ww, wh) = (480, 480)
-screen = pygame.display.set_mode((ww, wh))
 pygame.display.set_caption(cap)
+(ww, wh) = (480, 480)       # display window size
+screen = pygame.display.set_mode((ww, wh))
 
 clock = pygame.time.Clock()
-
-joysticks = {}
 
 img00 = pygame.image.load("images/0.jpg").convert()
 img0 = pygame.image.load("images/0.png").convert_alpha()
@@ -20,93 +18,116 @@ img12RL = pygame.image.load("images/12RL.png").convert_alpha()
 img12RR = pygame.image.load("images/12RR.png").convert_alpha()
  
 bg = img00
-bgw, bgh = bg.get_size()
+(bgw, bgh) = bg.get_size()
+x0 = -(bgw-ww)/2    # Initial x
+x1 = -(bgw-ww)      # maximum x value
+y0 = -(bgh-wh)/2    # Initial y
+y1 = -(bgh-wh)      # maximum y value
+x = x0              # Initial x
+y = y0              # Initial y
+
 sf = img0
 sfw, sfh = sf.get_size()
 
+t = 0.05            # minimum change to the axis required
+v = 5               # moving speed in ten gears
+d = 0.2             # drift
+r = 0               # angle when rolling 
+s = 1               # scale 100%
+
+joysticks = {}
 done = False
-black = (0,0,0)
-x0 = -(bgw-ww)/2
-x1 = -(bgw-ww)
-y0 = -(bgh-wh)/2
-y1 = -(bgh-wh)
-x = x0
-y = y0
-v = 10
-t = 0.05
-r = 0
 while not done:
     for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                done = True  
         if event.type == pygame.QUIT:
             done = True
-        if event.type == pygame.JOYBUTTONDOWN:
-            if event.button == 0:
-                joystick = joysticks[event.instance_id]
         if event.type == pygame.JOYDEVICEADDED:
             joy = pygame.joystick.Joystick(event.device_index)
             joysticks[joy.get_instance_id()] = joy
-        if event.type == pygame.JOYDEVICEREMOVED:
-            del joysticks[event.instance_id]
 
-    screen.fill(black)
     cap = "Drone Sim"
     bg = img00
     sf = img0
     r = 0
-    
+
     for joystick in joysticks.values():
         axes = joystick.get_numaxes()
         for i in range(axes):
             axis = joystick.get_axis(i)
-            if (i == 0) and (axis < -t):
-                cap = "Yaw Left"
-                sf = img0YL
-                if x < 0:
-                    x -= v*axis
-            if (i == 0) and (axis > t):
-                cap = "Yaw Right"
-                sf = img0YR
-                if x > x1:
-                    x -= v*axis
-            if (i == 1) and (axis < -t):
-                cap = "Throttle Up"
-                sf = img0 
-                if y > y1:
-                    y += v*axis*0.2
-            if (i == 1) and (axis > t):
-                cap = "Throttle Down"
-                sf = img0
-                if y < 0:
-                    y += v*axis*0.2
-            if (i == 2) and (axis < -t):
-                cap = "Roll Left"
-                sf = img12RL
-                if x < 0:
-                    x -= v*axis*0.2
-                    r = 25
-            if (i == 2) and (axis > t):
-                cap = "Roll Right"
-                sf = img12RR
-                if x > x1:
-                    x -= v*axis*0.2
-                    r = -25
-            if (i == 3) and (axis < -t):
-                cap = "Pitch Up"
-                sf = img1
-                if y > y1:
-                    y += v*axis
-            if (i == 3) and (axis > t):
-                cap = "Pitch Down"
-                sf = img1
-                if y < 0:
-                    y += v*axis
+            # Left stick: X-axis turn (left or right)
+            # Axis 0: Yaw or Rudder, left hand with Mode 2
+            if i == 0:
+                if axis < -t:
+                    cap = "Yaw Left"            
+                    sf = img0YL
+                    if x < 0:
+                        x -= v*axis
+                    else:
+                        x = x1
+                if axis > t:
+                    cap = "Yaw Right"
+                    sf = img0YR
+                    if x > x1:
+                        x -= v*axis
+                    else:
+                        x = 0
+            # Left stick: Y-axis go (up or down), altitude/height
+            # Axis 1: Throttle, left hand with Mode 2
+            if i == 1:
+                if axis < -t:
+                    cap = "Throttle Up" 
+                    sf = img0                     
+                    if y < 0:
+                        y -= v*axis
+                    else:
+                        y = y1
+                if axis > t:
+                    cap = "Throttle Down"
+                    sf = img0 
+                    if y > y1:
+                        y -= v*axis
+                    else:
+                        y = 0
+            # Right stick: tilt (left or right)
+            # Axis 2: Roll or Aileron, right hand with Mode 2
+            if i == 2:
+                if axis < -t:
+                    cap = "Roll Left"           
+                    sf = img12RL
+                    if x < 0:
+                        x -= v*axis*d
+                        r = -25
+                    else:
+                        x = x1
+                if axis > t:
+                    cap = "Roll Right"
+                    sf = img12RR
+                    if x > x1:
+                        x -= v*axis*d
+                        r = 25
+                    else:
+                        x = 0
+            # Right stick: tilt (forward or rear)
+            # Axis 3: Pitch or Elevator, right hand with Mode 2
+            if i == 3:
+                if axis < -t:
+                    cap = "Pitch Up"            
+                    sf = img1
+                    if y > y1:
+                        y += v*axis*d
+                    else:
+                        y = 0
+                if axis > t:
+                    cap = "Pitch Down"
+                    sf = img1
+                    if y < 0:
+                        y += v*axis*d
+                    else:
+                        y = y1
             if (i == 4) and (axis > t):
                 v += v/10
             if (i == 5) and (axis > t):
-                v = 10
+                v = 5
                 x = x0
                 y = y0
                 
