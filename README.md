@@ -13,7 +13,7 @@ B. Features:
 4. Easy replacement of background image, currently the Niagara Falls  
 5. Background rotations when rolling left or right [Ref 3]   
 6. Drone operations are based on the discriptions in [Ref 2]  
-7. Simple program with about 100 lines of code   
+7. Simple program with about 150 lines of code in one file  
 
 C. Game Controls:
 
