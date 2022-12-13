@@ -42,6 +42,7 @@ F. Added DroneSim2.py [Ref 4]
 - Rotate  
 - Scale  
 - Joystick  
+![DroneSit](dronesim2.png)  
 
 [Ref 1] https://www.pygame.org/    
 [Ref 2] https://uavcoach.com/how-to-fly-a-quadcopter-guide/  
