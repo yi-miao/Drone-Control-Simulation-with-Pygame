@@ -37,7 +37,14 @@ E. Screenshot
 - Drone Sim:  
 ![DroneSit](dronesim.png)  
 
+F. Added DroneSim2.py [Ref 4]  
+- Surface  
+- Rotate  
+- Scale  
+- Joystick  
+
 [Ref 1] https://www.pygame.org/    
 [Ref 2] https://uavcoach.com/how-to-fly-a-quadcopter-guide/  
 [Ref 3] https://stackoverflow.com/questions/4183208/how-do-i-rotate-an-image-around-its-center-using-pygame  
+[Ref 4] https://github.com/Rabbid76/PyGameExamplesAndAnswers/blob/master/documentation/pygame_opengl/immediate_mode/pygame_opengl_immediate_mode.md#pygame-and-opengl-immediate-mode-legacy-opengl  
 
