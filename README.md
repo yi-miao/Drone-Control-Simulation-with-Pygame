@@ -39,6 +39,8 @@ E. Screenshot
 ![DroneSit](dronesim.png)  
 
 F. Added DroneSim2.py [Ref 4]  
+- Draw (Circle)  
+- Rect  
 - Surface  
 - Rotate  
 - Scale  
