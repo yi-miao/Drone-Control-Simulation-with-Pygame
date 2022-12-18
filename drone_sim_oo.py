@@ -7,6 +7,8 @@ CURSOR = (20, 8)
 WINDOW = (480, 480)
 PARAM_DO = 0.01
 PARAM_DK = 1.2
+PARAM_AG = 45
+PARAM_SP = 10
         
 class Game:
     def __init__(self):
@@ -44,21 +46,21 @@ class Game:
         self.angle = 0
         (self.sw, self.sh) = (self.sw0, self.sh0)
         if key == pygame.K_LEFT:
-            self.angle = 45
+            self.angle = PARAM_AG
             for p in self.points:
                 p[0], p[2] = np.cos(-PARAM_DO)*p[0]-np.sin(-PARAM_DO)*p[2], np.sin(-PARAM_DO)*p[0]+np.cos(-PARAM_DO)*p[2]               
         if key == pygame.K_RIGHT:
-            self.angle = -45
+            self.angle = -PARAM_AG
             for p in self.points:
                 p[0], p[2] = np.cos(PARAM_DO)*p[0]-np.sin(PARAM_DO)*p[2], np.sin(PARAM_DO)*p[0]+np.cos(PARAM_DO)*p[2] 
         if key == pygame.K_UP:
             (self.sw, self.sh) = (int(self.sw0*PARAM_DK), int(self.sh0*PARAM_DK))  
             for p in self.points:
-                p[2] += 10  
+                p[2] += PARAM_SP  
         if key == pygame.K_DOWN:
             (self.sw, self.sh) = (self.sw0//PARAM_DK, self.sh0//PARAM_DK)   
             for p in self.points:
-                p[2] -= 10    
+                p[2] -= PARAM_SP    
                 
     def update(self):          
         for p in self.points:
