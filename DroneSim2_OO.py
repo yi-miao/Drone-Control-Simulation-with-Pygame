@@ -16,8 +16,8 @@ class Game:
         (self.ww, self.wh) = WINDOW
         self.center=(self.ww//2, self.wh//2)     
         self.screen = pygame.display.set_mode(WINDOW)
-        self.surface0 = pygame.Surface(CURSOR, pygame.SRCALPHA)
-        self.surface0.fill(WHITE)
+        self.cursor = pygame.Surface(CURSOR, pygame.SRCALPHA)
+        self.cursor.fill(WHITE)
         (self.sw0, self.sh0) = CURSOR
         (self.sw, self.sh) = (self.sw0, self.sh0)
         self.angle = 0
@@ -76,7 +76,7 @@ class Game:
                     except:
                         print("failed to draw circle.")
 
-        surface = pygame.transform.scale(self.surface0, (self.sw, self.sh)) 
+        surface = pygame.transform.scale(self.cursor, (self.sw, self.sh)) 
         rotated_surface = pygame.transform.rotate(surface, self.angle)
         rect = rotated_surface.get_rect(center = (self.ww//2, self.wh//2))
         self.screen.blit(rotated_surface, (rect.x, rect.y))
